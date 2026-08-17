@@ -6,6 +6,9 @@
 #define PWM_PIN_2A  18
 #define PWM_PIN_2B  4
 
+#define CW 0
+#define CCW 1
+
 extern int frequency;
 extern int resolution;
 extern int pwmChannel1;
