@@ -28,7 +28,7 @@ void encoder2_ISR(void){
     else{encoder->counter[1]--;}
 }
 
-void setup_encoder(){
+void init_mc02_encoder(){
     attachInterrupt(digitalPinToInterrupt(ENCODER1A), encoder1_ISR, CHANGE); pinMode(ENCODER1B, INPUT);
     attachInterrupt(digitalPinToInterrupt(ENCODER2A), encoder2_ISR, CHANGE); pinMode(ENCODER2B, INPUT);
     for (int i=0;i<NUM_OF_MOTORS;i++) encoder->counter[i]=0;

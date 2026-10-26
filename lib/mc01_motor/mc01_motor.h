@@ -14,7 +14,7 @@ extern int resolution;
 extern int pwmChannel1;
 extern int pwmChannel2;
 
-void setup_motor(void);
+void init_mc01_motor(void);
 void driveMotor1(int pwm);
 void driveMotor2(int pwm);
 

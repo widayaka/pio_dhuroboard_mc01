@@ -1,12 +1,12 @@
 
 #include <Arduino.h>
-#include "gpio.h"
+#include "mc01_button.h"
 
 bool button_up = false;
 bool button_dn = false;
 bool button_ok = false;
 
-void setup_button(){
+void init_mc01_button(){
     pinMode(BUTTON_UP, INPUT_PULLUP);
     pinMode(BUTTON_DN, INPUT_PULLUP);
     pinMode(BUTTON_OK, INPUT_PULLUP);

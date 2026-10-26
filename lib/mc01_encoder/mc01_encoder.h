@@ -38,7 +38,7 @@ extern encoder_data encoder[NUM_OF_MOTORS];
 
 void encoder1_ISR(void);
 void encoder2_ISR(void);
-void setup_encoder(void);
+void init_mc01_encoder(void);
 void encoder_calculation(void);
 
 #endif
