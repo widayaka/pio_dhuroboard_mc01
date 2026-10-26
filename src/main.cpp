@@ -1,7 +1,8 @@
 #include <Arduino.h>
 #include "ESP32Servo.h"
-#include "button.h"
-#include "motor.h"
+
+#include "mc02_button.h"
+#include "mc02_motor.h"
 #include "mc02_encoder.h"
 #include "mc02_display.h"
 
