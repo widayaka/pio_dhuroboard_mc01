@@ -22,4 +22,6 @@ void templateMainMenu(void);
 void drawMainMenu(int selected);
 void mainMenu(void);
 
+void main_menu_configure(void);
+
 #endif

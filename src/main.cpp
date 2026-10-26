@@ -42,53 +42,6 @@ void setup() {
 }
 
 void loop(){
-  mc01_oled.clearDisplay();
-  
-  // rect1
-  mc01_oled.drawRoundRect(1, 1, 126, 13, 3, 1); 
-  
-  // Dhuro Board MC-01
-  mc01_oled.setTextColor(1);
-  mc01_oled.setTextWrap(false);
-  mc01_oled.setFont(NULL);
-  mc01_oled.setCursor(14, 4);
-  mc01_oled.print("DHURO BOARD MC-01");
-
-  // rect2
-  mc01_oled.fillRoundRect(1, 16, 59, 13, 3, 1);
-
-  // Configuration
-  mc01_oled.setFont(NULL);
-  mc01_oled.setTextColor(0);
-  mc01_oled.setCursor(4, 19);
-  mc01_oled.print("Configure");
-
-  // rect3
-  mc01_oled.drawRoundRect(1, 31, 59, 13, 3, 1);
-
-  // Check
-  mc01_oled.setFont(NULL);
-  mc01_oled.setTextColor(1);
-  mc01_oled.setCursor(16, 34);
-  mc01_oled.print("Check");
-
-  // rect4
-  mc01_oled.drawRoundRect(1, 46, 59, 13, 3, 1);
-
-  // Program
-  mc01_oled.setFont(NULL);
-  mc01_oled.setTextColor(1);
-  mc01_oled.setCursor(10, 49);
-  mc01_oled.print("Program");
-
-  // rect5
-  mc01_oled.drawRoundRect(62, 16, 65, 43, 3, 1);
-  
-  // Go!
-  mc01_oled.setTextColor(1);
-  mc01_oled.setCursor(65, 42);
-  mc01_oled.setFont(&FreeSerifItalic18pt7b);
-  mc01_oled.print("GO!");
-  mc01_oled.display();
+  main_menu_configure();
 }
 
