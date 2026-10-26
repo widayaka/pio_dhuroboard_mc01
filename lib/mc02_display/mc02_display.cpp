@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "display.h"
+#include "mc02_display.h"
 #include "button.h"
 
 int menu = 0;

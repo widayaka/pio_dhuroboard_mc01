@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "encoder.h"
+#include "mc02_encoder.h"
 
 int VAL_ENC_1A = 0;
 int VAL_ENC_1B = 0;
