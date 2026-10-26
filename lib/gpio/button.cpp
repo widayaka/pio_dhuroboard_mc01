@@ -6,7 +6,7 @@ bool button_up = false;
 bool button_dn = false;
 bool button_ok = false;
 
-void setup_gpio(){
+void setup_button(){
     pinMode(BUTTON_UP, INPUT_PULLUP);
     pinMode(BUTTON_DN, INPUT_PULLUP);
     pinMode(BUTTON_OK, INPUT_PULLUP);

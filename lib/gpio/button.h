@@ -9,7 +9,7 @@ extern bool button_up;
 extern bool button_dn;
 extern bool button_ok;
 
-void setup_gpio(void);
+void setup_button(void);
 bool read_button_up();
 bool read_button_dn();
 bool read_button_ok();
