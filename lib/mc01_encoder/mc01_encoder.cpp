@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "mc02_encoder.h"
+#include "mc01_encoder.h"
 
 int VAL_ENC_1A = 0;
 int VAL_ENC_1B = 0;
@@ -28,7 +28,7 @@ void encoder2_ISR(void){
     else{encoder->counter[1]--;}
 }
 
-void init_mc02_encoder(){
+void init_mc01_encoder(){
     attachInterrupt(digitalPinToInterrupt(ENCODER1A), encoder1_ISR, CHANGE); pinMode(ENCODER1B, INPUT);
     attachInterrupt(digitalPinToInterrupt(ENCODER2A), encoder2_ISR, CHANGE); pinMode(ENCODER2B, INPUT);
     for (int i=0;i<NUM_OF_MOTORS;i++) encoder->counter[i]=0;
