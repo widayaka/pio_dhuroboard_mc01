@@ -22,6 +22,8 @@ void templateMainMenu(void);
 void drawMainMenu(int selected);
 void mainMenu(void);
 
+void main_menu_program(void);
 void main_menu_configure(void);
+void main_menu_check(void);
 
 #endif
