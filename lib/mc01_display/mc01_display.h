@@ -26,4 +26,14 @@ void main_menu_program(void);
 void main_menu_configure(void);
 void main_menu_check(void);
 
+void menu_configure(void);
+
+void program_socc_4wd(void);
+void program_socc_omni(void);
+void program_socc_meca(void);
+void program_ros2_ddmr(void);
+void program_trans_4wd(void);
+void program_trans_omni(void);
+void program_trans_meca(void);
+
 #endif

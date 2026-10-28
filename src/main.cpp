@@ -42,11 +42,6 @@ void setup() {
 }
 
 void loop(){
-  main_menu_program();
-  delay(1000);
-  main_menu_configure();
-  delay(1000);
-  main_menu_check();
-  delay(1000);
+  while (menu == 0){mainMenu();}
 }
 
