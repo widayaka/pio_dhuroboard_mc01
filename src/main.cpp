@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <Fonts/FreeSerifItalic18pt7b.h>
+#include <Ps3Controller.h>
+#include <EEPROM.h>
 
 #include "mc01_button.h"
 #include "mc01_motor.h"
