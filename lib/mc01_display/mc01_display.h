@@ -20,7 +20,9 @@ extern int pilih_mode;
 
 void templateMainMenu(void);
 void drawMainMenu(int selected);
+
 void mainMenu(void);
+void menuProgram(void);
 
 void main_menu_program(void);
 void main_menu_configure(void);
@@ -35,5 +37,7 @@ void program_ros2_ddmr(void);
 void program_trans_4wd(void);
 void program_trans_omni(void);
 void program_trans_meca(void);
+void program_cancel(void);
+void program_ok_exit(void);
 
 #endif

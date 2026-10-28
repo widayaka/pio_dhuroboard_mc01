@@ -42,6 +42,7 @@ void setup() {
 }
 
 void loop(){
-  while (menu == 0){mainMenu();}
+  while (menu == 0) {mainMenu();}
+  while (menu == 1) {menuProgram();}
 }
 

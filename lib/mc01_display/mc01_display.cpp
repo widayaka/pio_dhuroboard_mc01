@@ -101,15 +101,33 @@ void drawMainMenu(int selected){
 //     if (read_button_ok()){delay(100); menu = pilih_menu + 1; mc01_oled.clearmc01_oled();}
 // }
 
-void mainMenu(){
+void mainMenu(void){
+    mc01_oled.clearDisplay();
     switch (page_idx_main_menu){
-        case 0: main_menu_program(); break;
-        case 1: main_menu_configure();  break;
-        case 2: main_menu_check();  break;
+        case 0: main_menu_program(); 
+        if (read_button_ok()){
+            delay(100); 
+            menu = 1;
+        }
+        break;
+
+        case 1: main_menu_configure();  
+        if (read_button_ok()){
+            delay(100); 
+            menu = 2;
+        }
+        break;
+        
+        case 2: main_menu_check();  
+        if (read_button_ok()){
+            delay(100); 
+            menu = 3;
+        }
+        break;
     }
 
     if (read_button_dn()){
-        delay(50); 
+        delay(100); 
         page_idx_main_menu++; 
         if (page_idx_main_menu > 2){
             page_idx_main_menu = 0;
@@ -117,29 +135,94 @@ void mainMenu(){
     }
     
     if (read_button_up()){
-        delay(50); 
+        delay(100); 
         page_idx_main_menu--; 
         if (page_idx_main_menu < 0){
             page_idx_main_menu = 2;}
         }
 
-    if (read_button_ok()){
-        delay(50); 
-        index_page = page_idx_main_menu;
-    }
+    
 }
 
 void menuProgram(void){
+    mc01_oled.clearDisplay();
     switch (page_idx_menu_program){
-        case 0: program_socc_4wd(); break;
-        case 1: program_socc_omni(); break;
-        case 2: program_socc_meca(); break;
+        case 0: program_socc_4wd(); 
+        if (read_button_ok()){
+            delay(50); 
+            index_mode = page_idx_menu_program; 
+            menu = 0;
+        }
+        break;
+
+        case 1: program_socc_omni(); 
+        if (read_button_ok()){
+            delay(50); 
+            index_mode = page_idx_menu_program; 
+            menu = 0;
+        }
+        break;
+        
+        case 2: program_socc_meca(); 
+        if (read_button_ok()){
+            delay(50); 
+            index_mode = page_idx_menu_program; 
+            menu = 0;
+        }
+        break;
+        
+        case 3: program_ros2_ddmr(); 
+        if (read_button_ok()){
+            delay(50); 
+            index_mode = page_idx_menu_program; 
+            menu = 0;
+        }
+        break;
+        
+        case 4: program_trans_4wd(); 
+        if (read_button_ok()){
+            delay(50); 
+            index_mode = page_idx_menu_program; 
+            menu = 0;
+        }
+        break;
+        
+        case 5: program_trans_omni(); 
+        if (read_button_ok()){
+            delay(50); 
+            index_mode = page_idx_menu_program; 
+            menu = 0;
+        }
+        break;
+        
+        case 6: program_trans_meca(); 
+        if (read_button_ok()){
+            delay(50); 
+            index_mode = page_idx_menu_program; 
+            menu = 0;
+        }
+        break;
+        
+        case 7: program_cancel(); 
+        if (read_button_ok()){
+            delay(50); 
+            menu = 0;
+        }
+        break;
+        
+        case 8: program_ok_exit(); 
+        if (read_button_ok()){
+            delay(50); 
+            index_mode = page_idx_menu_program; 
+            menu = 0;
+        }
+        break;
     }
 
     if (read_button_dn()){
         delay(100); 
         page_idx_menu_program++; 
-        if (page_idx_menu_program > 2){
+        if (page_idx_menu_program > 8){
             page_idx_menu_program = 0;
         }
     }
@@ -148,16 +231,11 @@ void menuProgram(void){
         delay(100); 
         page_idx_menu_program--; 
         if (page_idx_main_menu < 0){
-            page_idx_main_menu = 2;
+            page_idx_main_menu = 8;
         }
     }
 
-    if (read_button_ok()){
-        delay(100); 
-        menu = 0;
-        index_mode = page_idx_menu_program; 
-        delay(100);
-    }
+    
 }
 
 void main_menu_program(void){
@@ -313,60 +391,8 @@ void main_menu_check(void){
   mc01_oled.display();
 }
 
-void menu_configure(void){
-    mc01_oled.clearDisplay();
-    // rect_socc_4wd
-    mc01_oled.fillRoundRect(1, 1, 61, 14, 3, 1);
-    // str_socc_4wd
-    mc01_oled.setTextColor(0);
-    mc01_oled.setTextWrap(false);
-    mc01_oled.setCursor(5, 5);
-    mc01_oled.print("Socc 4WD");
-    // rect_socc_omni
-    mc01_oled.drawRoundRect(1, 17, 61, 14, 3, 1);
-    // str_socc_omni
-    mc01_oled.setTextColor(1);
-    mc01_oled.setCursor(5, 21);
-    mc01_oled.print("Socc Omni");
-    // rect_socc_meca
-    mc01_oled.drawRoundRect(1, 33, 61, 14, 3, 1);
-    // str_socc_meca
-    mc01_oled.setCursor(5, 36);
-    mc01_oled.print("Socc Meca");
-    // rect_ros_ddmr
-    mc01_oled.drawRoundRect(1, 49, 61, 14, 3, 1);
-    // str_ros_ddmr
-    mc01_oled.setCursor(5, 52);
-    mc01_oled.print("ROS2 DDMR");
-    // rect_trans_4wd
-    mc01_oled.drawRoundRect(64, 1, 63, 14, 3, 1);
-    // str_trans_4wd
-    mc01_oled.setCursor(66, 5);
-    mc01_oled.print("Trans 4WD");
-    // rect_trans_omni
-    mc01_oled.drawRoundRect(64, 17, 63, 14, 3, 1);
-    // str_trans_omni
-    mc01_oled.setCursor(66, 21);
-    mc01_oled.print("Trans Omni");
-    // rect_trans_meca
-    mc01_oled.drawRoundRect(64, 33, 63, 14, 3, 1);
-    // str_trans_meca
-    mc01_oled.setCursor(66, 36);
-    mc01_oled.print("Trans Meca");
-    // rect_cancel
-    mc01_oled.drawRoundRect(64, 49, 40, 14, 3, 1);
-    // str_cancel
-    mc01_oled.setCursor(67, 52);
-    mc01_oled.print("Cancel");
-    // rect_ok
-    mc01_oled.drawRoundRect(105, 49, 22, 14, 3, 1);
-    // str_ok
-    mc01_oled.setCursor(110, 53);
-    mc01_oled.print("OK");
-    mc01_oled.display();
-}
-
 void program_socc_4wd(void){
+    mc01_oled.setFont(NULL);
     mc01_oled.clearDisplay();
     // rect_socc_4wd
     mc01_oled.fillRoundRect(1, 1, 61, 14, 3, 1);
@@ -420,6 +446,7 @@ void program_socc_4wd(void){
 }
 
 void program_socc_omni(void){
+    mc01_oled.setFont(NULL);
     mc01_oled.clearDisplay();
     // rect_socc_4wd
     mc01_oled.drawRoundRect(1, 1, 61, 14, 3, 1);
@@ -474,6 +501,7 @@ void program_socc_omni(void){
 }
 
 void program_socc_meca(void){
+    mc01_oled.setFont(NULL);
     mc01_oled.clearDisplay();
     // rect_socc_4wd
     mc01_oled.drawRoundRect(1, 1, 61, 14, 3, 1);
@@ -528,18 +556,330 @@ void program_socc_meca(void){
 }
 
 void program_ros2_ddmr(void){
-    
+    mc01_oled.setFont(NULL);
+    mc01_oled.clearDisplay();
+    // rect_socc_4wd
+    mc01_oled.drawRoundRect(1, 1, 61, 14, 3, 1);
+    // str_socc_4wd
+    mc01_oled.setTextColor(1);
+    mc01_oled.setTextWrap(false);
+    mc01_oled.setCursor(5, 5);
+    mc01_oled.print("Socc 4WD");
+    // rect_socc_omni
+    mc01_oled.drawRoundRect(1, 17, 61, 14, 3, 1);
+    // str_socc_omni
+    mc01_oled.setCursor(5, 21);
+    mc01_oled.print("Socc Omni");
+    // rect_socc_meca
+    mc01_oled.drawRoundRect(1, 33, 61, 14, 3, 1);
+    // str_socc_meca
+    mc01_oled.setCursor(5, 36);
+    mc01_oled.print("Socc Meca");
+    // rect_ros_ddmr
+    mc01_oled.fillRoundRect(1, 49, 61, 14, 3, 1);
+    // str_ros_ddmr
+    mc01_oled.setTextColor(0);
+    mc01_oled.setCursor(5, 52);
+    mc01_oled.print("ROS2 DDMR");
+    // rect_trans_4wd
+    mc01_oled.drawRoundRect(64, 1, 63, 14, 3, 1);
+    // str_trans_4wd
+    mc01_oled.setTextColor(1);
+    mc01_oled.setCursor(66, 5);
+    mc01_oled.print("Trans 4WD");
+    // rect_trans_omni
+    mc01_oled.drawRoundRect(64, 17, 63, 14, 3, 1);
+    // str_trans_omni
+    mc01_oled.setCursor(66, 21);
+    mc01_oled.print("Trans Omni");
+    // rect_trans_meca
+    mc01_oled.drawRoundRect(64, 33, 63, 14, 3, 1);
+    // str_trans_meca
+    mc01_oled.setCursor(66, 36);
+    mc01_oled.print("Trans Meca");
+    // rect_cancel
+    mc01_oled.drawRoundRect(64, 49, 40, 14, 3, 1);
+    // str_cancel
+    mc01_oled.setCursor(67, 52);
+    mc01_oled.print("Cancel");
+    // rect_ok
+    mc01_oled.drawRoundRect(105, 49, 22, 14, 3, 1);
+    // str_ok
+    mc01_oled.setCursor(110, 53);
+    mc01_oled.print("OK");
+    mc01_oled.display();
 }
 
 void program_trans_4wd(void){
-    
+    mc01_oled.setFont(NULL);
+    mc01_oled.clearDisplay();
+    // rect_socc_4wd
+    mc01_oled.drawRoundRect(1, 1, 61, 14, 3, 1);
+    // str_socc_4wd
+    mc01_oled.setTextColor(1);
+    mc01_oled.setTextWrap(false);
+    mc01_oled.setCursor(5, 5);
+    mc01_oled.print("Socc 4WD");
+    // rect_socc_omni
+    mc01_oled.drawRoundRect(1, 17, 61, 14, 3, 1);
+    // str_socc_omni
+    mc01_oled.setCursor(5, 21);
+    mc01_oled.print("Socc Omni");
+    // rect_socc_meca
+    mc01_oled.drawRoundRect(1, 33, 61, 14, 3, 1);
+    // str_socc_meca
+    mc01_oled.setCursor(5, 36);
+    mc01_oled.print("Socc Meca");
+    // rect_ros_ddmr
+    mc01_oled.drawRoundRect(1, 49, 61, 14, 3, 1);
+    // str_ros_ddmr
+    mc01_oled.setCursor(5, 52);
+    mc01_oled.print("ROS2 DDMR");
+    // rect_trans_4wd
+    mc01_oled.fillRoundRect(64, 1, 63, 14, 3, 1);
+    // str_trans_4wd
+    mc01_oled.setTextColor(0);
+    mc01_oled.setCursor(66, 5);
+    mc01_oled.print("Trans 4WD");
+    // rect_trans_omni
+    mc01_oled.drawRoundRect(64, 17, 63, 14, 3, 1);
+    // str_trans_omni
+    mc01_oled.setTextColor(1);
+    mc01_oled.setCursor(66, 21);
+    mc01_oled.print("Trans Omni");
+    // rect_trans_meca
+    mc01_oled.drawRoundRect(64, 33, 63, 14, 3, 1);
+    // str_trans_meca
+    mc01_oled.setCursor(66, 36);
+    mc01_oled.print("Trans Meca");
+    // rect_cancel
+    mc01_oled.drawRoundRect(64, 49, 40, 14, 3, 1);
+    // str_cancel
+    mc01_oled.setCursor(67, 52);
+    mc01_oled.print("Cancel");
+    // rect_ok
+    mc01_oled.drawRoundRect(105, 49, 22, 14, 3, 1);
+    // str_ok
+    mc01_oled.setCursor(110, 53);
+    mc01_oled.print("OK");
+    mc01_oled.display();
 }
 
 void program_trans_omni(void){
-
+    mc01_oled.setFont(NULL);
+    mc01_oled.clearDisplay();
+    // rect_socc_4wd
+    mc01_oled.drawRoundRect(1, 1, 61, 14, 3, 1);
+    // str_socc_4wd
+    mc01_oled.setTextColor(1);
+    mc01_oled.setTextWrap(false);
+    mc01_oled.setCursor(5, 5);
+    mc01_oled.print("Socc 4WD");
+    // rect_socc_omni
+    mc01_oled.drawRoundRect(1, 17, 61, 14, 3, 1);
+    // str_socc_omni
+    mc01_oled.setCursor(5, 21);
+    mc01_oled.print("Socc Omni");
+    // rect_socc_meca
+    mc01_oled.drawRoundRect(1, 33, 61, 14, 3, 1);
+    // str_socc_meca
+    mc01_oled.setCursor(5, 36);
+    mc01_oled.print("Socc Meca");
+    // rect_ros_ddmr
+    mc01_oled.drawRoundRect(1, 49, 61, 14, 3, 1);
+    // str_ros_ddmr
+    mc01_oled.setCursor(5, 52);
+    mc01_oled.print("ROS2 DDMR");
+    // rect_trans_4wd
+    mc01_oled.drawRoundRect(64, 1, 63, 14, 3, 1);
+    // str_trans_4wd
+    mc01_oled.setCursor(66, 5);
+    mc01_oled.print("Trans 4WD");
+    // rect_trans_omni
+    mc01_oled.fillRoundRect(64, 17, 63, 14, 3, 1);
+    // str_trans_omni
+    mc01_oled.setTextColor(0);
+    mc01_oled.setCursor(66, 21);
+    mc01_oled.print("Trans Omni");
+    // rect_trans_meca
+    mc01_oled.drawRoundRect(64, 33, 63, 14, 3, 1);
+    // str_trans_meca
+    mc01_oled.setTextColor(1);
+    mc01_oled.setCursor(66, 36);
+    mc01_oled.print("Trans Meca");
+    // rect_cancel
+    mc01_oled.drawRoundRect(64, 49, 40, 14, 3, 1);
+    // str_cancel
+    mc01_oled.setCursor(67, 52);
+    mc01_oled.print("Cancel");
+    // rect_ok
+    mc01_oled.drawRoundRect(105, 49, 22, 14, 3, 1);
+    // str_ok
+    mc01_oled.setCursor(110, 53);
+    mc01_oled.print("OK");
+    mc01_oled.display();
 }
 
 void program_trans_meca(void){
-    
+    mc01_oled.setFont(NULL);
+    mc01_oled.clearDisplay();
+    // rect_socc_4wd
+    mc01_oled.drawRoundRect(1, 1, 61, 14, 3, 1);
+    // str_socc_4wd
+    mc01_oled.setTextColor(1);
+    mc01_oled.setTextWrap(false);
+    mc01_oled.setCursor(5, 5);
+    mc01_oled.print("Socc 4WD");
+    // rect_socc_omni
+    mc01_oled.drawRoundRect(1, 17, 61, 14, 3, 1);
+    // str_socc_omni
+    mc01_oled.setCursor(5, 21);
+    mc01_oled.print("Socc Omni");
+    // rect_socc_meca
+    mc01_oled.drawRoundRect(1, 33, 61, 14, 3, 1);
+    // str_socc_meca
+    mc01_oled.setCursor(5, 36);
+    mc01_oled.print("Socc Meca");
+    // rect_ros_ddmr
+    mc01_oled.drawRoundRect(1, 49, 61, 14, 3, 1);
+    // str_ros_ddmr
+    mc01_oled.setCursor(5, 52);
+    mc01_oled.print("ROS2 DDMR");
+    // rect_trans_4wd
+    mc01_oled.drawRoundRect(64, 1, 63, 14, 3, 1);
+    // str_trans_4wd
+    mc01_oled.setCursor(66, 5);
+    mc01_oled.print("Trans 4WD");
+    // rect_trans_omni
+    mc01_oled.drawRoundRect(64, 17, 63, 14, 3, 1);
+    // str_trans_omni
+    mc01_oled.setCursor(66, 21);
+    mc01_oled.print("Trans Omni");
+    // rect_trans_meca
+    mc01_oled.fillRoundRect(64, 33, 63, 14, 3, 1);
+    // str_trans_meca
+    mc01_oled.setTextColor(0);
+    mc01_oled.setCursor(66, 36);
+    mc01_oled.print("Trans Meca");
+    // rect_cancel
+    mc01_oled.drawRoundRect(64, 49, 40, 14, 3, 1);
+    // str_cancel
+    mc01_oled.setTextColor(1);
+    mc01_oled.setCursor(67, 52);
+    mc01_oled.print("Cancel");
+    // rect_ok
+    mc01_oled.drawRoundRect(105, 49, 22, 14, 3, 1);
+    // str_ok
+    mc01_oled.setCursor(110, 53);
+    mc01_oled.print("OK");
+    mc01_oled.display();
 }
 
+void program_cancel(void){
+    mc01_oled.setFont(NULL);
+    mc01_oled.clearDisplay();
+    // rect_socc_4wd
+    mc01_oled.drawRoundRect(1, 1, 61, 14, 3, 1);
+    // str_socc_4wd
+    mc01_oled.setTextColor(1);
+    mc01_oled.setTextWrap(false);
+    mc01_oled.setCursor(5, 5);
+    mc01_oled.print("Socc 4WD");
+    // rect_socc_omni
+    mc01_oled.drawRoundRect(1, 17, 61, 14, 3, 1);
+    // str_socc_omni
+    mc01_oled.setCursor(5, 21);
+    mc01_oled.print("Socc Omni");
+    // rect_socc_meca
+    mc01_oled.drawRoundRect(1, 33, 61, 14, 3, 1);
+    // str_socc_meca
+    mc01_oled.setCursor(5, 36);
+    mc01_oled.print("Socc Meca");
+    // rect_ros_ddmr
+    mc01_oled.drawRoundRect(1, 49, 61, 14, 3, 1);
+    // str_ros_ddmr
+    mc01_oled.setCursor(5, 52);
+    mc01_oled.print("ROS2 DDMR");
+    // rect_trans_4wd
+    mc01_oled.drawRoundRect(64, 1, 63, 14, 3, 1);
+    // str_trans_4wd
+    mc01_oled.setCursor(66, 5);
+    mc01_oled.print("Trans 4WD");
+    // rect_trans_omni
+    mc01_oled.drawRoundRect(64, 17, 63, 14, 3, 1);
+    // str_trans_omni
+    mc01_oled.setCursor(66, 21);
+    mc01_oled.print("Trans Omni");
+    // rect_trans_meca
+    mc01_oled.drawRoundRect(64, 33, 63, 14, 3, 1);
+    // str_trans_meca
+    mc01_oled.setCursor(66, 36);
+    mc01_oled.print("Trans Meca");
+    // rect_cancel
+    mc01_oled.fillRoundRect(64, 49, 40, 14, 3, 1);
+    // str_cancel
+    mc01_oled.setTextColor(0);
+    mc01_oled.setCursor(67, 52);
+    mc01_oled.print("Cancel");
+    // rect_ok
+    mc01_oled.drawRoundRect(105, 49, 22, 14, 3, 1);
+    // str_ok
+    mc01_oled.setTextColor(1);
+    mc01_oled.setCursor(110, 53);
+    mc01_oled.print("OK");
+    mc01_oled.display();
+}
+
+void program_ok_exit(void){
+    mc01_oled.setFont(NULL);
+    mc01_oled.clearDisplay();
+    // rect_socc_4wd
+    mc01_oled.drawRoundRect(1, 1, 61, 14, 3, 1);
+    // str_socc_4wd
+    mc01_oled.setTextColor(1);
+    mc01_oled.setTextWrap(false);
+    mc01_oled.setCursor(5, 5);
+    mc01_oled.print("Socc 4WD");
+    // rect_socc_omni
+    mc01_oled.drawRoundRect(1, 17, 61, 14, 3, 1);
+    // str_socc_omni
+    mc01_oled.setCursor(5, 21);
+    mc01_oled.print("Socc Omni");
+    // rect_socc_meca
+    mc01_oled.drawRoundRect(1, 33, 61, 14, 3, 1);
+    // str_socc_meca
+    mc01_oled.setCursor(5, 36);
+    mc01_oled.print("Socc Meca");
+    // rect_ros_ddmr
+    mc01_oled.drawRoundRect(1, 49, 61, 14, 3, 1);
+    // str_ros_ddmr
+    mc01_oled.setCursor(5, 52);
+    mc01_oled.print("ROS2 DDMR");
+    // rect_trans_4wd
+    mc01_oled.drawRoundRect(64, 1, 63, 14, 3, 1);
+    // str_trans_4wd
+    mc01_oled.setCursor(66, 5);
+    mc01_oled.print("Trans 4WD");
+    // rect_trans_omni
+    mc01_oled.drawRoundRect(64, 17, 63, 14, 3, 1);
+    // str_trans_omni
+    mc01_oled.setCursor(66, 21);
+    mc01_oled.print("Trans Omni");
+    // rect_trans_meca
+    mc01_oled.drawRoundRect(64, 33, 63, 14, 3, 1);
+    // str_trans_meca
+    mc01_oled.setCursor(66, 36);
+    mc01_oled.print("Trans Meca");
+    // rect_cancel
+    mc01_oled.drawRoundRect(64, 49, 40, 14, 3, 1);
+    // str_cancel
+    mc01_oled.setCursor(67, 52);
+    mc01_oled.print("Cancel");
+    // rect_ok
+    mc01_oled.fillRoundRect(105, 49, 22, 14, 3, 1);
+    // str_ok
+    mc01_oled.setTextColor(0);
+    mc01_oled.setCursor(110, 53);
+    mc01_oled.print("OK");
+    mc01_oled.display();
+}
